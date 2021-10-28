@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Category, Product, Tag } = require('../../models');
 
-// The `/api/categories` endpoint
 router.get('/', (req, res) => {
   Category.findAll({
     include:[Product]
@@ -34,6 +33,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  console.log(req);
   Category.create(req.body)
   .then((category) => {
     res.json(category)
